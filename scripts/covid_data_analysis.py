@@ -7,7 +7,7 @@ import os
 import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
-COUNTRY = 'iraq'
+COUNTRY = 'italy'
 STATUS = ['confirmed', 'recovered', 'deaths']
 API = 'https://api.covid19api.com/dayone/country/{}/status/{}/live'
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')
@@ -66,6 +66,10 @@ cases_deaths = df_deaths.cases.values
 cases_deaths_daily = get_daily_cases(cases_deaths)
 dates_deaths = df_deaths.date.values
 
+cases_active = cases_confirmed-cases_recovered-cases_deaths
+#cases_active_daily = get_daily_cases(cases_active)
+dates_active = dates_confirmed
+
 
 years = mdates.YearLocator()
 months = mdates.MonthLocator()
@@ -76,6 +80,7 @@ month_fmt = mdates.DateFormatter('%M')
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5), dpi=120)
 ax1.plot(dates_confirmed, cases_confirmed, color='k', label='Confirmed')
 ax1.plot(dates_recovered, cases_recovered, color='g', label='Recovered')
+ax1.plot(dates_active, cases_active,'--', color='b', label='Active')
 ax1.plot(dates_deaths, cases_deaths, color='r', label='Deaths')
 ax1.xaxis.set_major_locator(months)
 ax1.set_title('Running Totals')
@@ -83,6 +88,7 @@ ax1.legend(loc='best')
 
 ax2.plot(dates_confirmed, cases_confirmed_daily, color='k', label='Confirmed')
 ax2.plot(dates_recovered, cases_recovered_daily, color='g', label='Recovered')
+#ax2.plot(dates_active, cases_active_daily, color='b', label='Active', marker='.')
 ax2.plot(dates_deaths, cases_deaths_daily, color='r', label='Deaths')
 ax2.xaxis.set_major_locator(months)
 ax2.set_title('Daily Totals')

@@ -7,10 +7,11 @@ import os
 import matplotlib.pyplot as plt
 plt.style.use('seaborn')
 
-COUNTRY = 'germany'
+COUNTRY = 'india'
 STATUS = ['confirmed', 'recovered', 'deaths']
 API = 'https://api.covid19api.com/dayone/country/{}/status/{}/live'
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')
+PLOTS_FOLDER_PATH = os.path.normpath(r'./plots/')
 
 data = {
     'cases': [],
@@ -89,4 +90,6 @@ ax2.legend(loc='best')
 
 
 plt.suptitle(f'Covid-19 Data Analysis for {COUNTRY.upper()}')
+plt.savefig(os.path.join(PLOTS_FOLDER_PATH, f'covid-19-analysis-{COUNTRY}-latest.jpg'), dpi=720, bbox_inces='tight')
 plt.show()
+

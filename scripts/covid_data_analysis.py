@@ -11,7 +11,7 @@ COUNTRY = 'bangladesh'
 STATUS = ['confirmed', 'recovered', 'deaths']
 API = 'https://api.covid19api.com/dayone/country/{}/status/{}/live'
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')
-PLOTS_FOLDER_PATH = os.path.normpath(r'./plots/')
+PLOTS_FOLDER_PATH = os.path.normpath(r'./plots/analysis/')
 
 data = {
     'cases': [],

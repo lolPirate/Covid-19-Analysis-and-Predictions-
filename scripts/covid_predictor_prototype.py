@@ -13,8 +13,10 @@ plt.style.use('bmh')
 # Global Variables
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')
 MODEL_FOLDER_PATH = os.path.normpath(r'./models/')
+PLOTS_FOLDER_PATH = os.path.normpath(r'./plots/predictions/prototype/')
 MODEL_NAME = 'covid-predictor-keras-prtotype-version-001.h5'
-TRAIN_DATA_FILES = ['india.csv', 'china.csv', 'iran.csv', 'australia.csv', 'canada.csv', 'italy.csv']
+TRAIN_DATA_FILES = ['india.csv', 'china.csv', 'iran.csv',
+                    'australia.csv', 'canada.csv', 'italy.csv']
 
 
 def get_training_data(country, status='confirmed'):
@@ -75,7 +77,7 @@ def train(model):
 
 def predict(country, model):
     model = load_model(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
-    test_df = pd.read_csv(os.path.join(DATA_FOLDER_PATH, country))
+    test_df = pd.read_csv(os.path.join(DATA_FOLDER_PATH, country+'.csv'))
     test_set = test_df[test_df['status'] == 'confirmed']['cases'].values
     y_actual = test_set.reshape(-1, 1)
     test_data = y_actual[:]
@@ -89,7 +91,7 @@ def predict(country, model):
     y_pred = model.predict(x_test)
     y_pred = sc.inverse_transform(y_pred)
 
-    fig, ax = plt.subplots(figsize=(10,10), dpi=120)
+    fig, ax = plt.subplots(figsize=(10, 10), dpi=120)
 
     ax.plot(y_actual[10:], 'g', label='Actual Reported')
     ax.plot(y_pred, 'r--', label='Predicted Reported')
@@ -97,11 +99,13 @@ def predict(country, model):
     plt.xlabel('Time')
     plt.ylabel('Cases')
     plt.suptitle('Predicted vs Reported')
+    plt.savefig(os.path.join(PLOTS_FOLDER_PATH,
+                             f'covid-19-predictions-{country}-latest.jpg'), dpi=720, bbox_inches='tight')
     plt.show()
 
 
 if __name__ == '__main__':
-    model = create_model()
-    model = train(model)
-    model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
-    predict('germany.csv', MODEL_NAME)
+    #model = create_model()
+    #model = train(model)
+    #model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
+    predict('germany', MODEL_NAME)

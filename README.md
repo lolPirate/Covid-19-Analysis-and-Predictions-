@@ -8,8 +8,8 @@ The goal of this project is to predict Covid-19 trends at a acountry level using
 ## Procedure
 - I have used the [PostMan Covid-19 API](https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest) for gathering data on a daily basis.
 - I conducted analysis on the gathered data using python. Below are a few examples of analysis for India and China.
-> India Analysis ![Analysis Image India](/plots/analysis/covid-19-analysis-india-latest.jpg)
-> China Analysis ![Analysis Image China](/plots/analysis/covid-19-analysis-china-latest.jpg)
+> **India Analysis** ![Analysis Image India](/plots/analysis/covid-19-analysis-india-latest.jpg)
+> **China Analysis** ![Analysis Image China](/plots/analysis/covid-19-analysis-china-latest.jpg)
 - I built the LSTM network (currently in prototype) in KERAS.
 - Currently the model is trained on data from 6 different countries: India, China, Iran, Australia, Canada and Italy with plans to add more countries in the future.
 

@@ -105,7 +105,7 @@ def predict(country, model):
 
 
 if __name__ == '__main__':
-    #model = create_model()
-    #model = train(model)
-    #model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
-    predict('germany', MODEL_NAME)
+    model = create_model()
+    model = train(model)
+    model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
+    predict('japan', MODEL_NAME)

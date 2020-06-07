@@ -91,7 +91,7 @@ def predict(country, model):
     y_pred = model.predict(x_test)
     y_pred = sc.inverse_transform(y_pred)
 
-    fig, ax = plt.subplots(figsize=(10, 10), dpi=120)
+    fig, ax = plt.subplots(dpi=120)
 
     ax.plot(y_actual[10:], 'g', label='Actual Reported')
     ax.plot(y_pred, 'r--', label='Predicted Reported')

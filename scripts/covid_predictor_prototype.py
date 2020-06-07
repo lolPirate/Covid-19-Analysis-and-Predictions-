@@ -88,15 +88,15 @@ def predict(country, model):
     x_test = x_test.reshape(x_test.shape[0], x_test.shape[1], 1)
     y_pred = model.predict(x_test)
     y_pred = sc.inverse_transform(y_pred)
-    
-    y_pred = np.append(y_actual[0:10], y_pred)
 
-    plt.plot(y_actual, 'g', label='Actual Reported')
-    plt.plot(y_pred, 'r--', label='Predicted Reported')
-    plt.legend(loc='best')
+    fig, ax = plt.subplots(figsize=(10,10), dpi=120)
+
+    ax.plot(y_actual[10:], 'g', label='Actual Reported')
+    ax.plot(y_pred, 'r--', label='Predicted Reported')
+    ax.legend(loc='best')
     plt.xlabel('Time')
     plt.ylabel('Cases')
-    plt.title('Predicted vs Reported')
+    plt.suptitle('Predicted vs Reported')
     plt.show()
 
 
@@ -104,4 +104,4 @@ if __name__ == '__main__':
     model = create_model()
     model = train(model)
     model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
-    predict('spain.csv', MODEL_NAME)
+    predict('germany.csv', MODEL_NAME)

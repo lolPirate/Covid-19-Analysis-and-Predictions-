@@ -7,7 +7,7 @@ import os
 import matplotlib.pyplot as plt
 plt.style.use('bmh')
 
-COUNTRY = 'india'
+COUNTRY = 'germany'
 STATUS = ['confirmed', 'recovered', 'deaths']
 API = 'https://api.covid19api.com/dayone/country/{}/status/{}/live'
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')

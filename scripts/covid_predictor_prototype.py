@@ -108,4 +108,4 @@ if __name__ == '__main__':
     model = create_model()
     model = train(model)
     model.save(os.path.join(MODEL_FOLDER_PATH, MODEL_NAME))
-    predict('japan', MODEL_NAME)
+    predict('new-zealand', MODEL_NAME)

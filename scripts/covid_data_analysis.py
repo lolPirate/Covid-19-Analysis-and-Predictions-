@@ -7,7 +7,7 @@ import os
 import matplotlib.pyplot as plt
 plt.style.use('bmh')
 
-COUNTRY = 'japan'
+COUNTRY = 'india'
 STATUS = ['confirmed', 'recovered', 'deaths']
 API = 'https://api.covid19api.com/dayone/country/{}/status/{}/live'
 DATA_FOLDER_PATH = os.path.normpath(r'./data/')
@@ -83,6 +83,7 @@ ax1.plot(dates_recovered, cases_recovered, color='g', label='Recovered')
 ax1.plot(dates_active, cases_active, '--', color='b', label='Active')
 ax1.plot(dates_deaths, cases_deaths, color='r', label='Deaths')
 ax1.xaxis.set_major_locator(months)
+ax1.xaxis.set_minor_locator(days)
 ax1.set_title(f'Cumulative')
 ax1.legend(loc='best')
 
@@ -94,6 +95,7 @@ ax2.plot(dates_recovered, cases_recovered_daily,
 ax2.plot(dates_deaths, cases_deaths_daily,
          color='r', label='Deaths', alpha=0.6)
 ax2.xaxis.set_major_locator(months)
+ax2.xaxis.set_minor_locator(days)
 ax2.set_title(f'Daily Totals')
 ax2.legend(loc='best')
 

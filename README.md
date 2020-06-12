@@ -66,7 +66,7 @@ There are two steps to use the model for training
 
 ## Future
 
-I plan to change the model so that it can predict into the future. Currently it just predicts the trend. After that I will create a web application to deploy it.
+I plan to change the model so that it can predict into the future. Currently it just predicts the trend. After that I will create a web application (django) to deploy it.
 
 ## Collaboration
 
